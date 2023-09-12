@@ -32,13 +32,13 @@ echo "Cuda Version:$cuda_version"
 
 if (( cuda_major_version >= 12 )) || (( cuda_major_version == 11 && cuda_minor_version >= 8 )); then
     echo "install torch 2.0.0+cu118"
-    pip install torch==2.0.0+cu118 torchvision==0.15.1+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
-    pip install xformers==0.0.19
+    /kaggle/working/venv/bin/pip3 install torch==2.0.0+cu118 torchvision==0.15.1+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
+    /kaggle/working/venv/bin/pip3 install xformers==0.0.19
 elif (( cuda_major_version == 11 && cuda_minor_version == 6 )); then
     echo "install torch 1.12.1+cu116"
-    pip install torch==1.12.1+cu116 torchvision==0.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
-    pip install --upgrade git+https://github.com/facebookresearch/xformers.git@0bad001ddd56c080524d37c84ff58d9cd030ebfd
-    pip install triton==2.0.0.dev20221202
+    /kaggle/working/venv/bin/pip3 install torch==1.12.1+cu116 torchvision==0.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
+    /kaggle/working/venv/bin/pip3 install --upgrade git+https://github.com/facebookresearch/xformers.git@0bad001ddd56c080524d37c84ff58d9cd030ebfd
+    /kaggle/working/venv/bin/pip3 install triton==2.0.0.dev20221202
 else
     echo "Unsupported cuda version:$cuda_version"
     #exit 1
@@ -47,10 +47,10 @@ fi
 echo "Installing deps..."
 cd "$script_dir/sd-scripts" || exit
 
-pip install --upgrade -r requirements.txt
+/kaggle/working/venv/bin/pip3 install --upgrade -r /kaggle/working/lora-scripts-lx/requirements.txt
 
 cd "$script_dir" || exit
 
-pip install --upgrade -r requirements.txt
+/kaggle/working/venv/bin/pip3 install --upgrade -r /kaggle/working/lora-scripts-lx/requirements.txt
 
 echo "Install completed"
