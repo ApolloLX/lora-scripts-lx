@@ -41,7 +41,7 @@ elif (( cuda_major_version == 11 && cuda_minor_version == 6 )); then
     pip install triton==2.0.0.dev20221202
 else
     echo "Unsupported cuda version:$cuda_version"
-    exit 1
+    #exit 1
 fi
 
 echo "Installing deps..."
