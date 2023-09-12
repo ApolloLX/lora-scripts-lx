@@ -122,7 +122,7 @@ if [[ $log_tracker_name ]]; then extArgs+=("--log_tracker_name $log_tracker_name
 
 if [[ $lowram ]]; then extArgs+=("--lowram"); fi
 
-python -m accelerate.commands.launch ${launchArgs[@]} --num_cpu_threads_per_process=8 "/kaggle/working/lora-scripts-lx/sd-scripts/train_network.py" \
+/kaggle/working/venv/bin/python3 -m accelerate.commands.launch ${launchArgs[@]} --num_cpu_threads_per_process=8 "/kaggle/working/lora-scripts-lx/sd-scripts/train_network.py" \
   --enable_bucket \
   --pretrained_model_name_or_path=$pretrained_model \
   --train_data_dir=$train_data_dir \
