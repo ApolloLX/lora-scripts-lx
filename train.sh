@@ -126,8 +126,8 @@ if [[ $lowram ]]; then extArgs+=("--lowram"); fi
   --enable_bucket \
   --pretrained_model_name_or_path=$pretrained_model \
   --train_data_dir=$train_data_dir \
-  --output_dir="/kaggle/working/lora-scripts/output" \
-  --logging_dir="/kaggle/working/lora-scripts/logs" \
+  --output_dir="/kaggle/working/lora-scripts-lx/output" \
+  --logging_dir="/kaggle/working/lora-scripts-lx/logs" \
   --log_prefix=$output_name \
   --resolution=$resolution \
   --network_module=$network_module \
