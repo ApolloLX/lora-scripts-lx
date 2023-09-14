@@ -16,7 +16,7 @@ network_alpha=64               # network alpha | 常用与 network_dim 相同的
 
 # Train related params | 训练相关参数
 resolution="512,512"  # image resolution w,h. 图片分辨率，宽,高。支持非正方形，但必须是 64 倍数。
-batch_size=1          # batch size
+batch_size=2          # batch size
 max_train_epoches=10  # max train epoches | 最大训练 epoch
 save_every_n_epochs=2 # save every n epochs | 每 N 个 epoch 保存一次
 
@@ -49,7 +49,7 @@ min_bucket_reso=256              # arb min resolution | arb 最小分辨率
 max_bucket_reso=1024             # arb max resolution | arb 最大分辨率
 persistent_data_loader_workers=0 # persistent dataloader workers | 容易爆内存，保留加载训练集的worker，减少每个 epoch 之间的停顿
 clip_skip=2                      # clip skip | 玄学 一般用 2
-multi_gpu=0 # multi gpu | 多显卡训练 该参数仅限在显卡数 >= 2 使用
+multi_gpu=1 # multi gpu | 多显卡训练 该参数仅限在显卡数 >= 2 使用
 lowram=0 # lowram mode | 低内存模式 该模式下会将 U-net 文本编码器 VAE 转移到 GPU 显存中 启用该模式可能会对显存有一定影响
 
 # 优化器设置
