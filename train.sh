@@ -5,7 +5,7 @@
 pretrained_model="/kaggle/input/sd-models/majicmixRealistic_v6.safetensors" # base model path | 底模路径
 is_v2_model=0                             # SD2.0 model | SD2.0模型 2.0模型下 clip_skip 默认无效
 parameterization=0                        # parameterization | 参数化 本参数需要和 V2 参数同步使用 实验性功能
-train_data_dir="/kaggle/input/mds-0910-1/mds"              # train dataset path | 训练数据集路径
+train_data_dir="/kaggle/input/mds-512-768/MDS_512_768"              # train dataset path | 训练数据集路径
 reg_data_dir=""                           # directory for regularization images | 正则化数据集路径，默认不使用正则化图像。
 
 # Network settings | 网络设置
@@ -15,10 +15,10 @@ network_dim=128                 # network dim | 常用 4~128，不是越大越�
 network_alpha=64               # network alpha | 常用与 network_dim 相同的值或者采用较小的值，如 network_dim的一半 防止下溢。默认值为 1，使用较小的 alpha 需要提升学习率。
 
 # Train related params | 训练相关参数
-resolution="512,512"  # image resolution w,h. 图片分辨率，宽,高。支持非正方形，但必须是 64 倍数。
+resolution="512,768"  # image resolution w,h. 图片分辨率，宽,高。支持非正方形，但必须是 64 倍数。
 batch_size=2          # batch size
 max_train_epoches=10  # max train epoches | 最大训练 epoch
-save_every_n_epochs=2 # save every n epochs | 每 N 个 epoch 保存一次
+save_every_n_epochs=1 # save every n epochs | 每 N 个 epoch 保存一次
 
 train_unet_only=0         # train U-Net only | 仅训练 U-Net，开启这个会牺牲效果大幅减少显存使用。6G显存可以开启
 train_text_encoder_only=0 # train Text Encoder only | 仅训练 文本编码器
@@ -122,7 +122,7 @@ if [[ $log_tracker_name ]]; then extArgs+=("--log_tracker_name $log_tracker_name
 
 if [[ $lowram ]]; then extArgs+=("--lowram"); fi
 
-/kaggle/working/venv/bin/python3 -m accelerate.commands.launch ${launchArgs[@]} --num_cpu_threads_per_process=8 "/kaggle/working/lora-scripts-lx/sd-scripts/train_network.py" \
+/kaggle/input/lora-scripts-venv/venv/bin/python3 -m accelerate.commands.launch ${launchArgs[@]} --num_cpu_threads_per_process=8 "/kaggle/working/lora-scripts-lx/sd-scripts/train_network.py" \
   --enable_bucket \
   --pretrained_model_name_or_path=$pretrained_model \
   --train_data_dir=$train_data_dir \
